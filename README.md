@@ -1,2 +1,2 @@
 # HtmlTemplateBuilder
-Assists creating reusable Html Templates for bodies and etc using C# only
+Assists creating reusable Html Templates for emaild bodies and etc using C# only
