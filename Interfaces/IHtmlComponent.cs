@@ -16,22 +16,10 @@ namespace Html.Interfaces
 
         /// <summary>
         /// Html Component as a HtmlContent - only to be overwritten if you want to change
-        /// the component's encoding, else HtmlContentBuilder will Write it unencoded.
+        /// the component's encoding, else HtmlContentBuilder will Write the string unencoded.
         /// </summary>
         /// <returns></returns>
         public IHtmlContent ToHtmlContent();
-
-        /// <summary>
-        /// Add Style to the Html Tag using a CssClass Style
-        /// </summary>
-        /// <param name="style"></param>
-        public void AddStyle(CssClass style);
-
-        /// <summary>
-        /// Adds a Class to the Html Tag
-        /// </summary>
-        /// <param name="className"></param>
-        public void AddClass(string className);
 
         /// <summary>
         /// Adds or Update a Attribute to the HtmlTag
@@ -39,5 +27,17 @@ namespace Html.Interfaces
         /// <param name="key"></param>
         /// <param name="value"></param>
         public void AddOrUpdateAttribute(string key, string value);
+
+        /// <summary>
+        /// Add Style to the Html Tag using a CssClass Style
+        /// </summary>
+        /// <param name="style"></param>
+        public void AddOrUpdateStyle(CssClass style);
+
+        /// <summary>
+        /// Adds a Class to the Html Tag
+        /// </summary>
+        /// <param name="className"></param>
+        public void AddClass(string className);
     }
 }

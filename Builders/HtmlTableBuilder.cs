@@ -35,6 +35,24 @@ namespace Html.Builders
         }
 
         /// <inheritdoc/>
+        public BuildFromDataHolderTable(DataHolderTable table, CssClass? style = null)
+        {
+            if (style != null)
+                AddStyle(style);
+
+            Headers = new Tr(table.Headers.Select(_ => new Th(_)));
+
+            foreach (object[] values in table.Values)
+            {
+                IEnumerable<Td> tds = values.Select(str => new Td(str, autoFormatData: table.AutoFormatData));
+                DataRows = DataRows.Append(new(tds: tds));
+            }
+
+            UpdateInnerText();
+        }
+        
+
+        /// <inheritdoc/>
         public Table Build()
         {
             toBuild.UpdateTagAndHtmlString();

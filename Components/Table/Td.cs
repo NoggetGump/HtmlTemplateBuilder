@@ -2,7 +2,7 @@
 using Html.Builders;
 using Html.Styles;
 
-namespace Html.Components
+namespace Html.Components.Table
 {
     /// <summary>
     /// A Html Table Data
