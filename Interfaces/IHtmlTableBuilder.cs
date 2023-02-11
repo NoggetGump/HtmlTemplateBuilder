@@ -8,7 +8,7 @@ namespace Html.Interfaces
     /// <summary>
     /// Represents an Html Table
     /// </summary>
-    public interface IHtmlTableBuilder
+    public interface IHtmlTableBuilder<T> where T : IHtmlTable
     {
         /// <summary>
         /// Add Headers to this Table
@@ -28,9 +28,14 @@ namespace Html.Interfaces
         public void AddDataRow(IEnumerable<Td> tds, CssClass? rowStyle = null);
 
         /// <summary>
+        /// Builds Table From DataHolderTable
+        /// </summary>
+        publicc T BuildFromDataHolderTable(DataHolderTable dataHolder, CssClass? style);
+
+        /// <summary>
         /// Builds Table - finishes Table Creation Process
         /// </summary>
         /// <returns></returns>
-        public Table Build();
+        public T Build();
     }
 }

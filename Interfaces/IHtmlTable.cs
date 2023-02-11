@@ -7,6 +7,10 @@ namespace Html.Interfaces
     /// </summary>
     public interface IHtmlTable : IHtmlComponent
     {
+        public Tr Headers { get; set; }
+
+        public IEnumerable<Tr> DataRows { get; set; }
+
         /// <summary>
         /// Updates Html Inner Text String
         /// </summary>
@@ -21,7 +25,7 @@ namespace Html.Interfaces
 
         /// <summary>
         /// Copies IHtmlTable object.
-        /// Minimally should copy Headers, DataRows and updated HtmlString
+        /// Minimally should copy Headers, DataRows and updated HtmlString.
         /// </summary>
         /// <returns></returns>
         public IHtmlTable ShallowCopy();

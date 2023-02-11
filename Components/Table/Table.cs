@@ -9,9 +9,9 @@ namespace Html.Components.Table
     /// <inheritdoc/>
     public class Table : IHtmlTable
     {
-        internal Tr Headers = new();
+        public Tr Headers { get; set; } = new();
 
-        internal IEnumerable<Tr> DataRows = Enumerble.Empty<Tr>();
+        public IEnumerable<Tr> DataRows { get; set; } = Enumerble.Empty<Tr>();
 
         /// <inheritdoc/>
         private protected override HtmlTagBuilder TagBuilder { get; set; } = new("table");
@@ -26,13 +26,6 @@ namespace Html.Components.Table
         /// <inheritdoc/>
         public void UpdateInnerText() =>
             TagBuilder.InnerHtml = Headers.HtmlString + string.Join("", DataRows.Select(_ => _.HtmlString));
-
-        /// <inheritdoc/>
-        public void UpdateHeadersStyle(CssClass style) 
-        {
-            Headers.AddOrUpdateStyle(style);
-            UpdateInnerText();
-        }
 
         /// <inheritdoc/>
         public void StyleAlternateDataRow(CssClass alt1, CssClass alt2)
@@ -54,11 +47,11 @@ namespace Html.Components.Table
 
         /// <inheritdoc/>
         public IHtmlTable ShallowCopy() => 
-        (IHtmlTable) new Table()
-        {
-            TagBuilder = TagBuilder,
-            Headers = Headers,
-            DataRows = DataRows,
-        };
+            (IHtmlTable) new Table()
+            {
+                TagBuilder = TagBuilder,
+                Headers = Headers,
+                DataRows = DataRows,
+            };
     }
 }

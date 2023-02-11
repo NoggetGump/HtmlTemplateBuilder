@@ -35,12 +35,12 @@ namespace Html.Builders
         }
 
         /// <inheritdoc/>
-        public BuildFromDataHolderTable(DataHolderTable table, CssClass? style = null)
+        public Table BuildFromDataHolderTable(DataHolderTable table, CssClass? style = null)
         {
             if (style != null)
                 AddStyle(style);
 
-            Headers = new Tr(table.Headers.Select(_ => new Th(_)));
+            toBuild.Headers = new Tr(table.Headers.Select(_ => new Th(_)));
 
             foreach (object[] values in table.Values)
             {
@@ -48,7 +48,7 @@ namespace Html.Builders
                 DataRows = DataRows.Append(new(tds: tds));
             }
 
-            UpdateInnerText();
+            return Build();
         }
         
 
