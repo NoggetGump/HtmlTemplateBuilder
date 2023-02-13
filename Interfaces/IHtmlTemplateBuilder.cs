@@ -1,8 +1,4 @@
-﻿using Html.Components.Dividers.Abstract;
-using Html.EstruturasAuxiliares;
-using System.Collections.Generic;
-
-namespace Html.Interfaces
+﻿namespace Html.Interfaces
 {
     /// <summary>
     /// IHtmlTemplateBuilder is the main interface and only Interface that should be

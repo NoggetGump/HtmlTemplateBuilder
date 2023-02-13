@@ -1,4 +1,4 @@
-﻿using Html.Dividers.Abstract;
+﻿using Html.Components.Dividers.Abstract;
 
 namespace Html.Builders
 {
