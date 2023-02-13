@@ -1,4 +1,4 @@
-﻿using Html.Dividers.Abstract;
+﻿using Html.Components.Dividers.Abstract;
 using Html.EstruturasAuxiliares;
 using System.Collections.Generic;
 
@@ -12,19 +12,10 @@ namespace Html.Interfaces
     public interface IHtmlTemplateBuilder
     {
         /// <summary>
-        /// Title to be used in the Builder, not necessarily it will be Title Tag's Inner Text
+        /// Title to be used in the Builder
+        /// Tip: you don't neccessarily need to use Title Tag
         /// </summary>
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Main Divider that carries most of the html information
-        /// </summary>
-        public HtmlDivider MainDivider { get; set; }
-
-        /// <summary>
-        /// Optional usage of DataHolderTable List to transmit Data Tables to the Builder
-        /// </summary>
-        public List<DataHolderTable> Tables { get; set; }
+        public string Title { get; }
 
         /// <summary>
         /// Html string to be written wherever needed

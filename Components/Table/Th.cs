@@ -1,6 +1,7 @@
-﻿using HtmlTemplateBuilder.Components.Abstract;
+﻿using Html.Components.Abstract;
 using Html.Builders;
 using Html.Styles;
+using System.Web.Mvc;
 
 namespace Html.Components.Table
 {
@@ -9,7 +10,7 @@ namespace Html.Components.Table
     /// </summary>
     public class Th : HtmlComponent
     {
-        private protected override HtmlTagBuilder TagBuilder { get; set; } = new ("th");
+        private protected override TagBuilder TagBuilder { get; set; } = new ("th");
 
         /// <summary>
         /// Receives a Header
@@ -19,10 +20,9 @@ namespace Html.Components.Table
         public Th(string header, CssClass? style = null)
         {
             if(style !=null)
-                AddStyle(style);
+                AddOrUpdateStyle(style);
 
             TagBuilder.InnerHtml = header;
-            htmlString = TagBuilder.UnencodedHtmlString;
         }
     }
 }

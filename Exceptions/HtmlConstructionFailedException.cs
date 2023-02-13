@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Html.Exceptions
+﻿namespace Html.Exceptions
 {
     /// <summary>
     /// Html Construction Exception: Not Ablet to Construct Element

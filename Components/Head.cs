@@ -1,6 +1,5 @@
-﻿using HtmlTemplateBuilder.Components.Abstract;
-using Html.Builders;
-using Html.Styles;
+﻿using Html.Components.Abstract;
+using System.Web.Mvc;
 
 namespace Html.Components
 {
@@ -10,7 +9,7 @@ namespace Html.Components
     public class Head : HtmlComponent
     {
         /// <inheritdoc/>
-        private protected override HtmlTagBuilder TagBuilder { get; set; } = new("head");
+        private protected override TagBuilder TagBuilder { get; set; } = new("head");
 
         /// <summary>
         /// Construtor padrão com parâmetros mínimos
@@ -26,7 +25,6 @@ namespace Html.Components
             innerText += style?.HtmlString ?? string.Empty;
 
             TagBuilder.InnerHtml = innerText;
-            htmlString = TagBuilder.UnencodedHtmlString;
         }
     }
 }

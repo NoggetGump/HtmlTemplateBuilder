@@ -1,8 +1,5 @@
-﻿using HtmlTemplateBuilder.Components.Abstract;
-using Html.Builders;
+﻿using Html.Components.Abstract;
 using Html.Styles;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace Html.Components.Table
@@ -10,15 +7,20 @@ namespace Html.Components.Table
     /// <summary>
     /// A Html Table Row
     /// </summary>
-    public class Tr :HtmlComponent
+    public class Tr : HtmlComponent
     {
         /// <inheritdoc/>
-        private protected override HtmlTagBuilder TagBuilder { get; set; } = new("tr");
+        private protected override TagBuilder TagBuilder { get; set; } = new("tr");
 
         /// <summary>
         /// Count of Ths
         /// </summary>
         public int ThCount { get; }
+
+        /// <summary>
+        /// Count of Tds
+        /// </summary>
+        public int TdCount { get; }
 
         /// <summary>
         /// Receives the Collection of Table Header (HtmlTh)
@@ -31,9 +33,10 @@ namespace Html.Components.Table
         public Tr(IEnumerable<Th>? ths = null, IEnumerable<Td>? tds = null, CssClass? style = null)
         {
             if (style != null)
-                AddStyle(style);
+                AddOrUpdateStyle(style);
 
             ThCount = 0;
+            TdCount = 0;
             string innerText = string.Empty;
             if (tds != null)
             {
@@ -46,7 +49,6 @@ namespace Html.Components.Table
             }
 
             TagBuilder.InnerHtml = innerText;
-            htmlString = TagBuilder.UnencodedHtmlString;
         }
     }
 }

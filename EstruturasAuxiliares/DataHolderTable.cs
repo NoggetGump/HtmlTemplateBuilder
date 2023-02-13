@@ -1,21 +1,17 @@
-﻿using Html.Interfaces;
-using Html.Styles;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using Html.Styles;
 namespace Html.EstruturasAuxiliares
 {
     /// <inheritdoc/>
-    public class DataHolderTable : IDataHolderTable
+    public class DataHolderTable
     {
         /// <inheritdoc/>
         public string? Title { get; set; }
 
         /// <inheritdoc/>
-        public string[] Headers { get; set; }
+        public IEnumerable<string> Headers { get; set; } = Enumerable.Empty<string>();
 
         /// <inheritdoc/>
-        public CssClass[] HeadersStyles { get; set; }
+        public IEnumerable<CssClass> HeadersStyles { get; set; } = Enumerable.Empty<CssClass>();
 
         /// <inheritdoc/>
         public IEnumerable<object[]> Values { get; set; } = Enumerable.Empty<object[]>();

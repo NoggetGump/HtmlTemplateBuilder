@@ -1,16 +1,15 @@
-﻿using Html.Components;
+﻿using Html.Components.Table;
+using Html.EstruturasAuxiliares;
 using Html.Exceptions;
 using Html.Interfaces;
 using Html.Styles;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Html.Builders
 {
     /// <inheritdoc/>
-    public class HtmlTableBuilder : IHtmlTableBuilder
+    public class HtmlTableBuilder : IHtmlTableBuilder<Table>
     {
-        private readonly Table toBuild;
+        private Table toBuild;
         /// <summary>
         /// Constructor with optional Style Addition
         /// </summary>
@@ -38,26 +37,25 @@ namespace Html.Builders
         public Table BuildFromDataHolderTable(DataHolderTable table, CssClass? style = null)
         {
             if (style != null)
-                AddStyle(style);
+                toBuild.AddOrUpdateStyle(style);
 
             toBuild.Headers = new Tr(table.Headers.Select(_ => new Th(_)));
 
             foreach (object[] values in table.Values)
             {
                 IEnumerable<Td> tds = values.Select(str => new Td(str, autoFormatData: table.AutoFormatData));
-                DataRows = DataRows.Append(new(tds: tds));
+                toBuild.DataRows = toBuild.DataRows.Append(new(tds: tds));
             }
 
             return Build();
         }
         
-
         /// <inheritdoc/>
         public Table Build()
         {
-            toBuild.UpdateTagAndHtmlString();
+            toBuild.UpdateInnerText();
 
-            return toBuild.ShallowCopy();
+            return (Table) toBuild.ShallowCopy();
         }
     }
 }

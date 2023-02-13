@@ -1,8 +1,6 @@
-﻿using HtmlTemplateBuilder.Components.Abstract;
-using Html.Builders;
+﻿using Html.Components.Abstract;
 using Html.Styles;
-using System.Collections.Generic;
-using System.Linq;
+using System.Web.Mvc;
 
 namespace Html.Components
 {
@@ -12,7 +10,7 @@ namespace Html.Components
     public class Style : HtmlComponent
     {
         /// <inheritdoc/>
-        private protected override HtmlTagBuilder TagBuilder { get; set; } = new("style");
+        private protected override TagBuilder TagBuilder { get; set; } = new("style");
 
         internal IEnumerable<CssClass> _cssClasses;
 
@@ -26,7 +24,6 @@ namespace Html.Components
 
             var innerText = string.Join(" ", cssClasses.Select(_ => _.GenCssClassComponent()));
             TagBuilder.InnerHtml = innerText;
-            htmlString = TagBuilder.UnencodedHtmlString;
         }
     }
 }

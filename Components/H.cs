@@ -1,6 +1,6 @@
-﻿using HtmlTemplateBuilder.Components.Abstract;
-using Html.Builders;
+﻿using Html.Components.Abstract;
 using Html.Styles;
+using System.Web.Mvc;
 
 namespace Html.Components
 {
@@ -11,7 +11,7 @@ namespace Html.Components
     public class H : HtmlComponent
     {
         /// <inheritdoc/>
-        private protected override HtmlTagBuilder TagBuilder { get; set; }
+        private protected override TagBuilder TagBuilder { get; set; }
 
         /// <summary>
         /// Construtor Padrão
@@ -27,9 +27,7 @@ namespace Html.Components
             };
 
             if (style != null)
-                AddStyle(style);
-
-            htmlString = TagBuilder.UnencodedHtmlString;
+                AddOrUpdateStyle(style);
         }
     }
 }

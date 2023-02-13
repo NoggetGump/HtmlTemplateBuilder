@@ -1,10 +1,9 @@
-﻿using Html.Builders;
-using Html.Interfaces;
+﻿using Html.Interfaces;
 using Html.Styles;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Html;
+using System.Web.Mvc;
 
-namespace HtmlTemplateBuilder.Components.Abstract
+namespace Html.Components.Abstract
 {
     /// <inheritdoc/>
     public abstract class HtmlComponent : IHtmlComponent
@@ -14,7 +13,7 @@ namespace HtmlTemplateBuilder.Components.Abstract
         /// <summary>
         /// TagBuilder with Html Tag Content
         /// </summary>
-        private protected abstract HtmlTagBuilder TagBuilder { get; set; }
+        private protected abstract TagBuilder TagBuilder { get; set; }
 
         /// <inheritdoc/>
         public string HtmlString => TagBuilder.ToString(TagRenderMode.Normal);

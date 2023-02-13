@@ -1,6 +1,6 @@
-﻿using HtmlTemplateBuilder.Components.Abstract;
-using Html.Builders;
+﻿using Html.Components.Abstract;
 using Html.Styles;
+using System.Web.Mvc;
 
 namespace Html.Components.Table
 {
@@ -10,7 +10,7 @@ namespace Html.Components.Table
     public class Td : HtmlComponent
     {
         /// <inheritdoc/>
-        private protected override HtmlTagBuilder TagBuilder { get; set; } = new("td");
+        private protected override TagBuilder TagBuilder { get; set; } = new("td");
 
         private void NumberStyle(object data, CssClass style)
         {
@@ -36,10 +36,9 @@ namespace Html.Components.Table
             }
 
             if(style != null)
-                AddStyle(style);
+                AddOrUpdateStyle(style);
 
             TagBuilder.InnerHtml = data.ToString();
-            htmlString = TagBuilder.UnencodedHtmlString;
         }
         
     }

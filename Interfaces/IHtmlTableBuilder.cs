@@ -1,7 +1,7 @@
-﻿using Html.Components;
+﻿using Html.Components.Table;
 using Html.Exceptions;
+using Html.EstruturasAuxiliares;
 using Html.Styles;
-using System.Collections.Generic;
 
 namespace Html.Interfaces
 {
@@ -30,7 +30,7 @@ namespace Html.Interfaces
         /// <summary>
         /// Builds Table From DataHolderTable
         /// </summary>
-        publicc T BuildFromDataHolderTable(DataHolderTable dataHolder, CssClass? style);
+        public T BuildFromDataHolderTable(DataHolderTable dataHolder, CssClass? style);
 
         /// <summary>
         /// Builds Table - finishes Table Creation Process

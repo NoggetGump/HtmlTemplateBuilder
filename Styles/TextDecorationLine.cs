@@ -21,8 +21,7 @@
         public static string ToString(TextDecorationLine decoration) => decoration switch
         { 
             TextDecorationLine.linethrough => "line-through",
-            _ => Enum.GetName(typeof(TextDecorationLine), decoration),
+            _ => Enum.GetName(typeof(TextDecorationLine), decoration)!,
         };
-
     }
 }

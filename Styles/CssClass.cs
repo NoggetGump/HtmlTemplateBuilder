@@ -9,7 +9,7 @@ namespace Html.Styles
     /// CssComponent to build a Style
     /// TODO: config main html style components through a configuration file!!! Than this solution will be really good
     /// </summary>
-    public class CssClass : ICssClass
+    public class CssClass
     {
         /// <summary>
         /// CSS Style Class Name
@@ -129,7 +129,7 @@ namespace Html.Styles
                 ColorSet(backGroundColorKey, value);
             }
         }
-        public string BackGroundImage { get; set; }
+        public string? BackGroundImage { get; set; }
         public BackGroundRepeat? BackGroundRepeat { get; set; }
         // TODO BackGroundPosition
 
@@ -261,7 +261,7 @@ namespace Html.Styles
         public float? WidthAbsolute { get; set; }
         public float? LetterSpacing { get; set; }
         public float? LineHeight { get; set; }
-        public string FontStyle { get; set; }
+        public string? FontStyle { get; set; }
 
         #endregion
 
@@ -272,9 +272,9 @@ namespace Html.Styles
             if (value != null)
             {
                 if (dict.ContainsKey(key))
-                    dict[key] = value?.ToString();
+                    dict[key] = value.ToString();
                 else
-                    dict.Add(key, value?.ToString());
+                    dict.Add(key, value.ToString());
             }
         }
 

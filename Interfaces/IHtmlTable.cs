@@ -1,4 +1,5 @@
-using Html.Components;
+using Html.Components.Table;
+using Html.Styles;
 
 namespace Html.Interfaces
 {

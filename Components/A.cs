@@ -1,6 +1,6 @@
-﻿using HtmlTemplateBuilder.Components.Abstract;
-using Html.Builders;
+﻿using Html.Components.Abstract;
 using Html.Styles;
+using System.Web.Mvc;
 
 namespace Html.Components
 {
@@ -9,7 +9,7 @@ namespace Html.Components
     /// </summary>
     public class A : HtmlComponent
     {
-        private protected override HtmlTagBuilder TagBuilder { get; set; } = new("a");
+        private protected override TagBuilder TagBuilder { get; set; } = new("a");
 
         /// <summary>
         /// Construtor Padrão
@@ -23,9 +23,7 @@ namespace Html.Components
             TagBuilder.MergeAttribute("href", link);
 
             if (style != null)
-                AddStyle(style);
-
-            htmlString = TagBuilder.UnencodedHtmlString;
+                AddOrUpdateStyle(style);
         }
     }
 }
