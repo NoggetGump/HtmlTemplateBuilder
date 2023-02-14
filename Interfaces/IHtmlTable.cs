@@ -8,6 +8,8 @@ namespace Html.Interfaces
     /// </summary>
     public interface IHtmlTable : IHtmlComponent
     {
+        public string Title { get; set; }
+        
         public Tr Headers { get; set; }
 
         public IEnumerable<Tr> DataRows { get; set; }

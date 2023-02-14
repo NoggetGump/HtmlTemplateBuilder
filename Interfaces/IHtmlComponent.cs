@@ -15,7 +15,7 @@ namespace Html.Interfaces
         public string HtmlString { get; }
 
         /// <summary>
-        /// Html Component as a HtmlContent - only to be overwritten if you want to change
+        /// Html Component as a HtmlContent - only to be overridden if you want to change
         /// the component's encoding, else HtmlContentBuilder will Write the string unencoded.
         /// </summary>
         /// <returns></returns>

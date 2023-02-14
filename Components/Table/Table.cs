@@ -9,6 +9,8 @@ namespace Html.Components.Table
     /// <inheritdoc/>
     public class Table : HtmlComponent, IHtmlTable
     {
+        public string Title { get; set; } = string.Empty;
+
         public Tr Headers { get; set; } = new();
 
         public IEnumerable<Tr> DataRows { get; set; } = Enumerable.Empty<Tr>();
@@ -24,7 +26,7 @@ namespace Html.Components.Table
         internal Table(CssClass? style = null) { if (style != null) AddOrUpdateStyle(style); }
 
         /// <inheritdoc/>
-        public void UpdateInnerText() =>
+        public void UpdateInnerText() => 
             TagBuilder.InnerHtml = Headers.HtmlString + string.Join("", DataRows.Select(_ => _.HtmlString));
 
         /// <inheritdoc/>

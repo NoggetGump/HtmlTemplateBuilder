@@ -46,11 +46,21 @@ namespace Html.Builders.Templates
         /// </summary>
         public OutlookMailBodyTemplate(string title, IHtmlDivider? mainDivider = null, IEnumerable<DataHolderTable>? dataHolders = null)
         {
+            _title = title;
+
             mainDivider ??= new Div();
             _mainDivider = mainDivider;
 
-            dataHolders ??= Enumerable.Empty<Table>();
-            _tables = dataHolders;
+            _tables = Enumerable.Empty<Table>();
+            if(dataHolders != null)
+            {
+                foreach(var dataHolder in dataHolders)
+                {
+                    HtmlTableBuilder tableBuilder = new();
+
+                    _tables = _tables.Append(tableBuilder.BuildFromDataHolderTable(dataHolder));
+                }
+            }
         }
 
         /// <summary>
@@ -63,26 +73,35 @@ namespace Html.Builders.Templates
 
             // starts html doocument
 
+            CssClass headersCss = new()
+            {
+                Important = true,
+                TextAlign = TextAlign.center,
+                BackGroundColor = Color.FromArgb(0x0, 0x30, 0xba, 0x09), //#30ba09
+                TextColor = Color.White
+            };
+
+            CssClass al1css = new()
+            {
+                Important = true,
+                BackGroundColor = Color.FromArgb(0x00, 0x3d, 0x4d, 0xd6) 
+            };
+
+            CssClass alt2css = new() 
+            {
+                Important = true,
+                BackGroundColor = Color.FromArgb(0x00, 0x19, 0x8f, 0x6a) 
+            };
+
             foreach (var table in _tables)
             {
-                Table htmlTable = new(table);
-
-                CssClass headersCss = new()
-                {
-                    Important = true,
-                    TextAlign = TextAlign.center,
-                    BackGroundColor = Color.FromArgb(0x0, 0x30, 0xba, 0x09), //#30ba09
-                    TextColor = Color.White
-                };
-
-                htmlTable.StyleHeadersRow(headersCss);
-                htmlTable.StyleAlternateDataRow(new CssClass() { Important = true, BackGroundColor = Color.FromArgb(0x00, 0xfd, 0xfd, 0xfb) },
-                    new CssClass() { Important = true, BackGroundColor = Color.FromArgb(0x00, 0xe7, 0xe8, 0xe3) });
+                table.Headers.AddOrUpdateStyle(headersCss);
+                table.StyleAlternateDataRow(al1css, alt2css);
 
                 if(table.Title != null)
                     builder.AppendHtml(new H(table.Title, 3).ToHtmlContent());
 
-                builder.AppendHtml(htmlTable.ToHtmlContent());
+                builder.AppendHtml(table.ToHtmlContent());
             }
 
             //Ends Html Document
