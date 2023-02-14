@@ -77,7 +77,7 @@ namespace Html.Builders.Templates
             {
                 Important = true,
                 TextAlign = TextAlign.center,
-                BackGroundColor = Color.FromArgb(0x0, 0x30, 0xba, 0x09), //#30ba09
+                BackGroundColor = Color.FromArgb(0x0, 0x30, 0xba, 0x09),
                 TextColor = Color.White
             };
 
@@ -87,7 +87,7 @@ namespace Html.Builders.Templates
                 BackGroundColor = Color.FromArgb(0x00, 0x3d, 0x4d, 0xd6) 
             };
 
-            CssClass alt2css = new() 
+            CssClass alt2css = new()
             {
                 Important = true,
                 BackGroundColor = Color.FromArgb(0x00, 0x19, 0x8f, 0x6a) 
