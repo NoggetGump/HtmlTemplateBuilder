@@ -56,7 +56,12 @@ namespace Html.Builders.Templates
             {
                 foreach(var dataHolder in dataHolders)
                 {
-                    HtmlTableBuilder tableBuilder = new();
+                    HtmlTableBuilder tableBuilder = new(
+                        new CssClass()
+                        {
+                            WidthPercent = 50
+                        }
+                    );
 
                     _tables = _tables.Append(tableBuilder.BuildFromDataHolderTable(dataHolder));
                 }
@@ -72,25 +77,27 @@ namespace Html.Builders.Templates
             HtmlContentBuilder builder = new();
 
             // starts html doocument
+            builder.AppendHtml(_mainDivider.StartTagContent);
+
+            builder.AppendHtml(new H(_title, 3).ToHtmlContent());
 
             CssClass headersCss = new()
             {
-                Important = true,
                 TextAlign = TextAlign.center,
-                BackGroundColor = Color.FromArgb(0x0, 0x30, 0xba, 0x09),
+                BackGroundColor = Color.FromArgb(0x00, 0x19, 0x8f, 0x6a),
                 TextColor = Color.White
             };
 
             CssClass al1css = new()
             {
-                Important = true,
-                BackGroundColor = Color.FromArgb(0x00, 0x3d, 0x4d, 0xd6) 
+                BackGroundColor = Color.FromArgb(0x00, 0x3d, 0x4d, 0xd6),
+                TextColor = Color.White
             };
 
             CssClass alt2css = new()
             {
-                Important = true,
-                BackGroundColor = Color.FromArgb(0x00, 0x19, 0x8f, 0x6a) 
+                BackGroundColor = Color.FromArgb(0x00, 0x19, 0x8f, 0x6a),
+                TextColor = Color.White
             };
 
             foreach (var table in _tables)
@@ -103,6 +110,8 @@ namespace Html.Builders.Templates
 
                 builder.AppendHtml(table.ToHtmlContent());
             }
+
+            builder.AppendHtml(_mainDivider.EndTagContent);
 
             //Ends Html Document
 

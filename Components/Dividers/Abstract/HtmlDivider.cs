@@ -20,7 +20,7 @@ namespace Html.Components.Dividers.Abstract
         public IHtmlContent EndTagContent => new HtmlString(EndTag);
 
         /// <summary>
-        /// A Divider can Have multiple Html Components
+        /// A Divider can Have multiple Html Components including other Dividers
         /// </summary>
         public abstract IEnumerable<IHtmlComponent> ChildComponents { get; }
     }

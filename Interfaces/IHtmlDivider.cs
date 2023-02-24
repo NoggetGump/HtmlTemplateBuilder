@@ -13,6 +13,10 @@ namespace Html.Interfaces
 
         public string EndTag { get; }
 
+        public IHtmlContent StartTagContent { get; }
+
+        public IHtmlContent EndTagContent { get; }
+
         public IEnumerable<IHtmlComponent> ChildComponents { get;   }
     }
 }
