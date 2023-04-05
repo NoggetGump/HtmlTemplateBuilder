@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Html;
+
 namespace Html.Interfaces
 {
     /// <summary>
@@ -9,6 +11,10 @@ namespace Html.Interfaces
         public string StartTag { get; }
 
         public string EndTag { get; }
+
+        public IHtmlContent StartTagContent => new HtmlString(StartTag);
+
+        public IHtmlContent EndTagContent => new HtmlString(EndTag);
 
         public IEnumerable<IHtmlComponent> ChildComponents { get; }
 

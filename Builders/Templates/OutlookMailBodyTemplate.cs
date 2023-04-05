@@ -88,7 +88,7 @@ namespace Html.Builders.Templates
                 TextColor = Color.White
             };
 
-            CssClass al1css = new()
+            CssClass alt1css = new()
             {
                 BackGroundColor = Color.FromArgb(0x00, 0x3d, 0x4d, 0xd6),
                 TextColor = Color.White
@@ -103,7 +103,7 @@ namespace Html.Builders.Templates
             foreach (var table in _tables)
             {
                 table.Headers.AddOrUpdateStyle(headersCss);
-                table.StyleAlternateDataRow(al1css, alt2css);
+                table.StyleAlternateDataRow(alt1css, alt2css);
 
                 if(table.Title != null)
                     builder.AppendHtml(new H(table.Title, 3).ToHtmlContent());
