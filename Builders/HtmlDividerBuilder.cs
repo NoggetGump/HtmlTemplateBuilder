@@ -1,4 +1,5 @@
 ﻿using Html.Components.Dividers.Abstract;
+using Html.Interfaces;
 
 namespace Html.Builders
 {
@@ -8,15 +9,32 @@ namespace Html.Builders
     /// </summary>
     public class HtmlDividerBuilder
     {
-        private readonly HtmlDivider _mainDiv;
+        private readonly IHtmlDivider _mainDiv;
 
         /// <summary>
         /// Construtor Padrão
         /// </summary>
         /// <param name="mainDiv"></param>
-        public HtmlDividerBuilder(HtmlDivider mainDiv)
+        public HtmlDividerBuilder(IHtmlDivider mainDiv)
         {
             _mainDiv = mainDiv;
+        }
+
+        public string Build()
+        {
+            if (_mainDiv.ChildComponents.Any())
+                foreach (var component in _mainDiv.ChildComponents)
+                {
+                    if (component is IHtmlDivider subDivider)
+                    {
+                        HtmlDividerBuilder builder = new(subDivider);
+                        _mainDiv.AppendToInnerText(builder.Build());
+                    }
+                    else
+                        _mainDiv.AppendToInnerText(component.HtmlString);
+                }
+
+            return _mainDiv.HtmlString;
         }
     }
 }
