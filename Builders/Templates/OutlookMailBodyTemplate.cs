@@ -84,7 +84,7 @@ namespace Html.Builders.Templates
             CssClass headersCss = new()
             {
                 TextAlign = TextAlign.center,
-                BackGroundColor = Color.FromArgb(0x00, 0x19, 0x8f, 0x6a),
+                BackGroundColor = Color.FromArgb(0x00, 0xa7, 0xa8, 0xa8),
                 TextColor = Color.White
             };
 
@@ -96,7 +96,7 @@ namespace Html.Builders.Templates
 
             CssClass alt2css = new()
             {
-                BackGroundColor = Color.FromArgb(0x00, 0x19, 0x8f, 0x6a),
+                BackGroundColor = Color.FromArgb(0x00, 0xa7, 0xa8, 0xa8),
                 TextColor = Color.White
             };
 
