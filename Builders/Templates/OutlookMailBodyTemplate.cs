@@ -79,24 +79,26 @@ namespace Html.Builders.Templates
             // starts html doocument
             builder.AppendHtml(_mainDivider.StartTagContent);
 
-            builder.AppendHtml(new H(_title, 3, new () { TextAlign = TextAlign.center }).ToHtmlContent());
+            builder.AppendHtml(new H(_title, 3, new () { PaddingLeft = 400 }).ToHtmlContent());
 
             CssClass headersCss = new()
             {
                 TextAlign = TextAlign.center,
-                BackGroundColor = Color.FromArgb(0x00, 0x26, 0x67, 0xff),
+                BackGroundColor = Color.FromArgb(0x0a, 0x00, 0x12, 0x0b),
                 TextColor = Color.White
             };
 
             CssClass alt1css = new()
             {
-                BackGroundColor = Color.FromArgb(0x00, 0xad, 0xd7, 0xf6),
-                TextColor = Color.White
+                TextAlign = TextAlign.center,
+                BackGroundColor = Color.FromArgb(0x0a, 0xd8, 0xe4, 0xff),
+                TextColor = Color.Black
             };
-            
+
             CssClass alt2css = new()
             {
-                BackGroundColor = Color.FromArgb(0x00, 0x3f, 0x8e, 0xfc),
+                TextAlign = TextAlign.center,
+                BackGroundColor = Color.FromArgb(0x0a, 0x35, 0x60, 0x5a),
                 TextColor = Color.White
             };
 

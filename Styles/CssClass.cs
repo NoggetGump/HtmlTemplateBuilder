@@ -1,7 +1,5 @@
 ﻿using Html.Exceptions;
-using Html.Interfaces;
 using System.Drawing;
-using System.Security.Policy;
 
 namespace Html.Styles
 {
